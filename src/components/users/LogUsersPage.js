@@ -4,11 +4,10 @@ import {RegisterForm} from './RegisterForm'
 import {Paper} from 'material-ui'
 
 
-
 class LogUsersPage extends Component{
 
     state={
-        user:{},
+        user:{}, 
         newUser:{}
     }
     componentWillMount(){
@@ -21,6 +20,8 @@ class LogUsersPage extends Component{
         user[field] = e.target.value;
         this.setState({user})
     }
+
+
     handleNewUser=(e)=>{
         let {newUser} = this.state;
         let field = e.target.name;
@@ -33,7 +34,7 @@ class LogUsersPage extends Component{
     signUp=(e)=>{
         e.preventDefault()
         //const userToken = JSON.parse(localStorage.getItem('userRanchoToken'));
-        let url = 'http://localhost:8000/users/';
+        let url = "http://localhost:8000/users/";
         var request = new Request(url, {
             method: 'POST',
             body: JSON.stringify(this.state.newUser),
@@ -46,13 +47,13 @@ class LogUsersPage extends Component{
             .then(r=>r.json())
             .then(data=>{
                 console.log(data)
-                this.props.history.push('/signin')
-                
+                this.props.history.push('/signin')           
             })
             .catch(e=>{
                 console.log(e)
         })
     }
+
     logInUser=(e)=>{
         e.preventDefault()
         this.props.logIn(this.state.user)

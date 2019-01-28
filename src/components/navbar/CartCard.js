@@ -9,7 +9,7 @@ export const CartCard = ({product, subtotal,quantity, addItem, removeItem}) => (
     disabled
     children={[
         <span className="cart-card-container">
-        <Avatar size={100} src={product.photo} />
+            <Avatar size={100} src={product.photo} />
             <FloatingActionButton primary={true} mini={true} onClick={()=>addItem(product)}>
                 <Add/>
             </FloatingActionButton>
@@ -17,7 +17,7 @@ export const CartCard = ({product, subtotal,quantity, addItem, removeItem}) => (
             <FloatingActionButton secondary={true} mini={true} onClick={()=>removeItem(product)}>
                 <Minus/>
             </FloatingActionButton>
-            <span>${subtotal}</span>
+        <span>$ {subtotal}</span>
 
         </span>
     ]}

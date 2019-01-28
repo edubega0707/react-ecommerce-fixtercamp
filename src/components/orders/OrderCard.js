@@ -8,7 +8,6 @@ export const OrderCard = ({expanded, handleExpandChange, id, total, date, items,
     <CardHeader
       title={`Orden de ${moment(date).format('LL')}---status: ${paid?'Pagada':'No pagada'}`}
       subtitle={`Total:${total}`}
-      
       actAsExpander={true}
       showExpandableButton={true}
     />

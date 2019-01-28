@@ -17,13 +17,14 @@ export const RegisterForm = ({email, username, password, password2, handleNewUse
             name={'email'}
             /><br />
             <TextField
-                onChange={handleNewUser}
+            onChange={handleNewUser}
             hintText="username"
             floatingLabelFixed={true}
             floatingLabelText="Username"
             fullWidth={true}
             name={'username'}
-            /><br />
+            />
+            <br />
         <TextField
             name={'password'}
             onChange={handleNewUser}

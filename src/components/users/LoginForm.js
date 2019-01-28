@@ -27,7 +27,7 @@ export const LoginForm = ({email, password, logIn, handleText, user}) => (
             /><br />
         <RaisedButton 
                 type={'submit'}
-                label="Sign In" 
+                label="Login" 
                 fullWidth={true} 
                 primary={true}/>
         </form>

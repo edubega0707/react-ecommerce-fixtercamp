@@ -11,7 +11,7 @@ class App extends Component {
     cart:{
       items:[],
       total:0
-    },
+    }, 
 }
 
 componentWillMount(){
@@ -23,6 +23,7 @@ addItem=(product)=>{
   let filtered = cart.items.filter(i=>{
     return i.product.id !== product.id
   })
+
   let repetido = cart.items.find(i => {
     return i.product.id === product.id
   });
@@ -31,7 +32,9 @@ addItem=(product)=>{
       repetido.quantity +=1;
       repetido.subtotal += parseFloat(repetido.product.price)
       filtered.push(repetido)
-  }else{
+  }
+  else
+  {
     let item = {subtotal:parseFloat(product.price), product, quantity:1}
     filtered.push(item)
   }
@@ -42,6 +45,9 @@ addItem=(product)=>{
   this.getTotal()
   console.log(cart)
 }
+
+
+
 getTotal=()=>{
   //let cart = Object.assign({}, this.state.cart)
   let {cart} = this.state;
@@ -62,6 +68,7 @@ removeItem=(product)=>{
   let repetido = cart.items.find(i => {
     return i.product.id === product.id
   });
+  
   if(repetido.quantity>=2){
     repetido.quantity -=1;
     repetido.subtotal -= parseFloat(repetido.product.price)
@@ -74,12 +81,15 @@ removeItem=(product)=>{
   console.log(cart)
 }
 
+
 checkIfuser=()=>{
     let userToken = JSON.parse(localStorage.getItem('userToken'));
     console.log(userToken)
     if (userToken) {
         this.setState({logged:true})
-    }else{
+    }
+    else
+    {
         this.setState({logged:false})
     }
 }
@@ -96,13 +106,12 @@ logIn=(user)=>{
           //'Authorization':'Token '+userToken,
           'Content-Type': 'application/json'
       })
-  });
+  }); 
   fetch(request)
       .then(r=>{
         if(r.ok)return r.json()
         console.log(r.json())
-        
-        
+              
       })
       .then(data=>{
           console.log(data)
@@ -115,6 +124,7 @@ logIn=(user)=>{
           this.setState({logged:false})
   })
 }
+
 
 logOut=()=>{
   localStorage.removeItem('userToken');
@@ -130,6 +140,7 @@ logOut=()=>{
           cart={cart}
           removeItem={this.removeItem}
           addItem={this.addItem}/>
+          
         <div className="routes-container">
           <Routes
             cart={cart}

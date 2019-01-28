@@ -14,17 +14,17 @@ const Logged = ({logOut, handleCart}) => (
             <CartIcon/>
         </IconButton>
         <IconMenu
-        iconButtonElement={
-        <IconButton><MoreVertIcon /></IconButton>
-        }
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
+            iconButtonElement={
+                <IconButton><MoreVertIcon /></IconButton>
+            }
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+         >
         <Link to="/profile">
-        <MenuItem primaryText="Profile" />
+            <MenuItem primaryText="Profile" />
         </Link>
-        <MenuItem primaryText="Sign out" onClick={logOut}/>
-    </IconMenu>
+        <MenuItem primaryText="Cerrar Sesion" onClick={logOut}/>
+        </IconMenu>
    </span>
 );
 
@@ -55,12 +55,12 @@ class Navbar extends React.Component{
             <div>
                 <AppBar
                     iconElementRight={
-                        <span>
-                             
+                        <span>                            
                             {logged ? 
                             <Logged 
                                 handleCart={this.handleCart}
-                                logOut={this.props.logOut}/> : <Login />}
+                                logOut={this.props.logOut}/> :
+                             <Login />}
                         </span>
                     }
                     iconElementLeft={
@@ -78,7 +78,8 @@ class Navbar extends React.Component{
                     </span>    
                     }
                     />
-                <Cart open={open}
+                <Cart 
+                    open={open}
                     addItem={addItem}
                     removeItem={removeItem}
                     handleCart={this.handleCart}

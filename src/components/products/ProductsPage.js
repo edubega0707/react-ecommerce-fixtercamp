@@ -32,13 +32,14 @@ class ProductsPage extends Component{
         fetch(request)
             .then(r=>r.json())
             .then(data=>{
-                console.log(data)
+                //console.log(data)
                 this.setState({products:data})
             })
             .catch(e=>{
                 console.log(e)
         })
     }
+
     getCategories=()=>{
         //const userToken = JSON.parse(localStorage.getItem('userRanchoToken'));
         let url = 'http://localhost:8000/categories/';
@@ -53,7 +54,7 @@ class ProductsPage extends Component{
         fetch(request)
             .then(r=>r.json())
             .then(data=>{
-                console.log(data)
+                //console.log(data)
                 this.setState({categories:data})
             })
             .catch(e=>{
@@ -64,18 +65,21 @@ class ProductsPage extends Component{
     handleSearch=(e)=>{
         this.setState({search:e.target.value})
     }
+
     handleCategory=(e, i, v)=>{
-        
         this.setState({category:v})
         console.log(this.state.category)
     }
+    
     render(){
         let {products, search, category, categories} = this.state;
         let {addItem, removeItem} = this.props
+
         const regEx = new RegExp(search, 'i');
         let filteredProducts = products.filter(i=>{
             return regEx.test(i.name)
         })
+        
         if(category){
             filteredProducts = filteredProducts.filter(p=>{
                 return p.category === category
@@ -88,7 +92,9 @@ class ProductsPage extends Component{
                     search={search}
                     category={category}
                     handleCategory={this.handleCategory}
-                    handleSearch={this.handleSearch}/>
+                    handleSearch={this.handleSearch}
+                    
+                />
                 <ProductsList 
                     removeItem={removeItem}
                     addItem={addItem}

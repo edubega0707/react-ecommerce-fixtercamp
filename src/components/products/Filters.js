@@ -21,6 +21,7 @@ export const Filters = ({handleSearch, handleCategory, search, category, categor
           ))}
           
         </SelectField>
+        
         <TextField
             hintText="Dulce rojo"
             value={search}
